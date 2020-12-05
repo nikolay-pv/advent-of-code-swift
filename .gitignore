@@ -1,0 +1,24 @@
+### macOS ###
+# General
+.DS_Store
+
+### Swift ###
+# Xcode
+#
+## Artifacts
+Build/
+DerivedData/
+
+## User settings
+xcuserdata/
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
