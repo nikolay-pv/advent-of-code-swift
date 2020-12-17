@@ -31,3 +31,29 @@ extension StringProtocol {
         return String(self[start ..< end])
     }
 }
+
+extension NSRegularExpression {
+    public convenience init(_ pattern: String) {
+        do {
+            try self.init(pattern: pattern)
+        } catch {
+            preconditionFailure("Illegal regular expression: \(pattern).")
+        }
+    }
+
+    public func matchingGroups(in string: String) -> [Range<String.Index>] {
+        let matches = self.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+        var res = [Range<String.Index>]()
+        if matches.count == 0 {
+            return res
+        }
+        let entireGroup = matches[0]
+        for i in 1..<entireGroup.numberOfRanges {
+            guard let range = Range(entireGroup.range(at: i), in: string) else {
+                fatalError()
+            }
+            res.append(range)
+        }
+        return res
+    }
+}
