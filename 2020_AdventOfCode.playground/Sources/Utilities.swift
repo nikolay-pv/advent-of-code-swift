@@ -1,8 +1,8 @@
 import Foundation
 
 // Returns the content of the input.txt file from the Resources folder
-public func getInput() -> String {
-    guard let inputFile = Bundle.main.path(forResource: "input", ofType: "txt"),
+public func getInput(_ filename: String = "input") -> String {
+    guard let inputFile = Bundle.main.path(forResource: filename, ofType: "txt"),
           let contentData = FileManager.default.contents(atPath: inputFile) else {
         return String()
     }
